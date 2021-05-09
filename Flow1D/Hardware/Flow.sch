@@ -1,0 +1,1562 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GND #PWR020
+U 1 1 60756489
+P 7750 4750
+F 0 "#PWR020" H 7750 4500 50  0001 C CNN
+F 1 "GND" H 7755 4577 50  0000 C CNN
+F 2 "" H 7750 4750 50  0001 C CNN
+F 3 "" H 7750 4750 50  0001 C CNN
+	1    7750 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDD #PWR019
+U 1 1 6075738F
+P 7750 2900
+F 0 "#PWR019" H 7750 2750 50  0001 C CNN
+F 1 "VDD" H 7700 3050 50  0000 C CNN
+F 2 "" H 7750 2900 50  0001 C CNN
+F 3 "" H 7750 2900 50  0001 C CNN
+	1    7750 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 2900 7750 2950
+$Comp
+L Device:C_Small C6
+U 1 1 60759572
+P 7600 2950
+F 0 "C6" V 7500 2900 50  0000 L CNN
+F 1 "10u" V 7550 2750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7600 2950 50  0001 C CNN
+F 3 "~" H 7600 2950 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A106MQ8NNNC" H 7600 2950 50  0001 C CNN "Link"
+F 5 "0.01598$" H 7600 2950 50  0001 C CNN "Price"
+	1    7600 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C7
+U 1 1 6075A94A
+P 7600 3100
+F 0 "C7" V 7700 3050 50  0000 L CNN
+F 1 "100n" V 7550 2850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7600 3100 50  0001 C CNN
+F 3 "~" H 7600 3100 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 7600 3100 50  0001 C CNN "Link"
+F 5 "0.00499$" H 7600 3100 50  0001 C CNN "Price"
+	1    7600 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR018
+U 1 1 607608FC
+P 7450 3150
+F 0 "#PWR018" H 7450 2900 50  0001 C CNN
+F 1 "GND" H 7300 3150 50  0000 C CNN
+F 2 "" H 7450 3150 50  0001 C CNN
+F 3 "" H 7450 3150 50  0001 C CNN
+	1    7450 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 2950 7750 2950
+Connection ~ 7750 2950
+Wire Wire Line
+	7750 2950 7750 3100
+Wire Wire Line
+	7700 3100 7750 3100
+Connection ~ 7750 3100
+Wire Wire Line
+	7750 3100 7750 3200
+Wire Wire Line
+	7500 2950 7450 2950
+Wire Wire Line
+	7450 2950 7450 3100
+Wire Wire Line
+	7450 3100 7500 3100
+Wire Wire Line
+	7450 3100 7450 3150
+Connection ~ 7450 3100
+$Comp
+L power:GND #PWR034
+U 1 1 6076CF34
+P 11300 3150
+F 0 "#PWR034" H 11300 2900 50  0001 C CNN
+F 1 "GND" H 11305 2977 50  0000 C CNN
+F 2 "" H 11300 3150 50  0001 C CNN
+F 3 "" H 11300 3150 50  0001 C CNN
+	1    11300 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR030
+U 1 1 607703D4
+P 10500 2650
+F 0 "#PWR030" H 10500 2500 50  0001 C CNN
+F 1 "+5V" H 10515 2823 50  0000 C CNN
+F 2 "" H 10500 2650 50  0001 C CNN
+F 3 "" H 10500 2650 50  0001 C CNN
+	1    10500 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDD #PWR039
+U 1 1 6077111C
+P 11800 2650
+F 0 "#PWR039" H 11800 2500 50  0001 C CNN
+F 1 "VDD" H 11815 2823 50  0000 C CNN
+F 2 "" H 11800 2650 50  0001 C CNN
+F 3 "" H 11800 2650 50  0001 C CNN
+	1    11800 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R12
+U 1 1 60784522
+P 7900 6050
+F 0 "R12" V 7704 6050 50  0000 C CNN
+F 1 "2.21k %1" V 7800 6050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7900 6050 50  0001 C CNN
+F 3 "~" H 7900 6050 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAF2211T5E" V 7900 6050 50  0001 C CNN "Link"
+F 5 "0.00208$" V 7900 6050 50  0001 C CNN "Price"
+	1    7900 6050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8250 6250 8200 6250
+Wire Wire Line
+	8200 6250 8200 6450
+Wire Wire Line
+	8200 6450 8900 6450
+Wire Wire Line
+	8900 6450 8900 6150
+Wire Wire Line
+	8900 6150 8850 6150
+$Comp
+L Device:C_Small C11
+U 1 1 60786FA0
+P 8550 5800
+F 0 "C11" V 8321 5800 50  0000 C CNN
+F 1 "1.5n %5" V 8412 5800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8550 5800 50  0001 C CNN
+F 3 "~" H 8550 5800 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL21C152JBFNNNE" V 8550 5800 50  0001 C CNN "Link"
+F 5 "0.04587$" V 8550 5800 50  0001 C CNN "Price"
+	1    8550 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C10
+U 1 1 60787608
+P 8050 6200
+F 0 "C10" H 7800 6050 50  0000 L CNN
+F 1 "1n %5" H 7700 6150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8050 6200 50  0001 C CNN
+F 3 "~" H 8050 6200 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL21C102JBCNNNC" H 8050 6200 50  0001 C CNN "Link"
+F 5 "0.01001$" H 8050 6200 50  0001 C CNN "Price"
+	1    8050 6200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR022
+U 1 1 60787E52
+P 8050 6350
+F 0 "#PWR022" H 8050 6100 50  0001 C CNN
+F 1 "GND" H 8055 6177 50  0000 C CNN
+F 2 "" H 8050 6350 50  0001 C CNN
+F 3 "" H 8050 6350 50  0001 C CNN
+	1    8050 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R11
+U 1 1 60789004
+P 7600 6050
+F 0 "R11" V 7750 6050 50  0000 C CNN
+F 1 "1.4k %1" V 7650 6050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7600 6050 50  0001 C CNN
+F 3 "~" H 7600 6050 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAF1401T5Ehttps://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAF1401T5E" V 7600 6050 50  0001 C CNN "Link"
+F 5 "0.00208$" V 7600 6050 50  0001 C CNN "Price"
+	1    7600 6050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8050 6100 8050 6050
+Wire Wire Line
+	8050 6050 8000 6050
+Wire Wire Line
+	8050 6050 8250 6050
+Connection ~ 8050 6050
+Wire Wire Line
+	8050 6300 8050 6350
+Wire Wire Line
+	8450 5800 7750 5800
+Wire Wire Line
+	7750 5800 7750 6050
+Wire Wire Line
+	7750 6050 7800 6050
+Wire Wire Line
+	7750 6050 7700 6050
+Connection ~ 7750 6050
+Wire Wire Line
+	8650 5800 8900 5800
+Wire Wire Line
+	8900 5800 8900 6150
+Connection ~ 8900 6150
+$Comp
+L Device:R_Small R10
+U 1 1 607BE671
+P 7100 5700
+F 0 "R10" V 6900 5700 50  0000 C CNN
+F 1 "47k" V 7000 5700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7100 5700 50  0001 C CNN
+F 3 "~" H 7100 5700 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/RC0603JR-47KR" H 7100 5700 50  0001 C CNN "Link"
+F 5 "0.00108$" H 7100 5700 50  0001 C CNN "Price"
+	1    7100 5700
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR025
+U 1 1 607DC2B6
+P 8450 7700
+F 0 "#PWR025" H 8450 7450 50  0001 C CNN
+F 1 "GND" H 8455 7527 50  0000 C CNN
+F 2 "" H 8450 7700 50  0001 C CNN
+F 3 "" H 8450 7700 50  0001 C CNN
+	1    8450 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C12
+U 1 1 607DDB32
+P 8600 7000
+F 0 "C12" V 8500 7250 50  0000 C CNN
+F 1 "100n" V 8500 7000 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8600 7000 50  0001 C CNN
+F 3 "~" H 8600 7000 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 8600 7000 50  0001 C CNN "Link"
+F 5 "0.00499$" H 8600 7000 50  0001 C CNN "Price"
+	1    8600 7000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8450 6950 8450 7000
+Wire Wire Line
+	8500 7000 8450 7000
+Connection ~ 8450 7000
+Wire Wire Line
+	8450 7000 8450 7050
+$Comp
+L power:GND #PWR026
+U 1 1 607E2057
+P 8750 7050
+F 0 "#PWR026" H 8750 6800 50  0001 C CNN
+F 1 "GND" H 8850 7050 50  0000 C CNN
+F 2 "" H 8750 7050 50  0001 C CNN
+F 3 "" H 8750 7050 50  0001 C CNN
+	1    8750 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8700 7000 8750 7000
+Wire Wire Line
+	8750 7000 8750 7050
+Wire Wire Line
+	8450 7650 8450 7700
+$Comp
+L Device:R_Small R14
+U 1 1 608113C0
+P 9050 6150
+F 0 "R14" V 8854 6150 50  0000 C CNN
+F 1 "22R" V 8945 6150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 9050 6150 50  0001 C CNN
+F 3 "~" H 9050 6150 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAJ0220T5E" H 9050 6150 50  0001 C CNN "Link"
+F 5 "0.00156$" H 9050 6150 50  0001 C CNN "Price"
+	1    9050 6150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C14
+U 1 1 60811C69
+P 9200 6300
+F 0 "C14" H 9292 6346 50  0000 L CNN
+F 1 "22n" H 9292 6255 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9200 6300 50  0001 C CNN
+F 3 "~" H 9200 6300 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CC0603KRX7R9BB223" H 9200 6300 50  0001 C CNN "Link"
+F 5 "0.01001$" H 9200 6300 50  0001 C CNN "Price"
+	1    9200 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR028
+U 1 1 60812730
+P 9200 6450
+F 0 "#PWR028" H 9200 6200 50  0001 C CNN
+F 1 "GND" H 9205 6277 50  0000 C CNN
+F 2 "" H 9200 6450 50  0001 C CNN
+F 3 "" H 9200 6450 50  0001 C CNN
+	1    9200 6450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 6150 8950 6150
+Wire Wire Line
+	9150 6150 9200 6150
+Wire Wire Line
+	9200 6150 9200 6200
+Wire Wire Line
+	9200 6450 9200 6400
+Text Label 9450 6150 0    50   ~ 0
+ADC_IN
+Wire Wire Line
+	9450 6150 9200 6150
+Connection ~ 9200 6150
+$Comp
+L Device:C_Small C2
+U 1 1 6084A328
+P 3900 4750
+F 0 "C2" H 3992 4796 50  0000 L CNN
+F 1 "1u" H 3992 4705 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3900 4750 50  0001 C CNN
+F 3 "~" H 3900 4750 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 3900 4750 50  0001 C CNN "Link"
+F 5 "0.00793$" H 3900 4750 50  0001 C CNN "Price"
+	1    3900 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 6084AA32
+P 3750 4750
+F 0 "R2" V 3600 4750 50  0000 C CNN
+F 1 "10k" V 3700 4750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3750 4750 50  0001 C CNN
+F 3 "~" H 3750 4750 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 3750 4750 50  0001 C CNN "Link"
+F 5 "0.00559$" H 3750 4750 50  0001 C CNN "Price"
+	1    3750 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4600 3900 4650
+Wire Wire Line
+	3900 4450 3850 4450
+$Comp
+L power:GND #PWR06
+U 1 1 60854693
+P 3900 4950
+F 0 "#PWR06" H 3900 4700 50  0001 C CNN
+F 1 "GND" H 3905 4777 50  0000 C CNN
+F 2 "" H 3900 4950 50  0001 C CNN
+F 3 "" H 3900 4950 50  0001 C CNN
+	1    3900 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4950 3900 4850
+$Comp
+L Device:Speaker_Ultrasound LS1
+U 1 1 60861A60
+P 3650 2850
+F 0 "LS1" H 4200 2850 50  0000 C CNN
+F 1 "Speaker_Ultrasound" H 4200 2950 50  0000 C CNN
+F 2 "flow:US_RXTX_10mm" H 3615 2800 50  0001 C CNN
+F 3 "~" H 3615 2800 50  0001 C CNN
+F 4 "0.5$" H 3650 2850 50  0001 C CNN "Price"
+	1    3650 2850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 60861A68
+P 3900 3250
+F 0 "C1" H 3850 3300 50  0000 L CNN
+F 1 "1u" H 3850 3200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3900 3250 50  0001 C CNN
+F 3 "~" H 3900 3250 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 3900 3250 50  0001 C CNN "Link"
+F 5 "0.00793$" H 3900 3250 50  0001 C CNN "Price"
+	1    3900 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R3
+U 1 1 60861A6E
+P 3900 2700
+F 0 "R3" H 4000 2750 50  0000 C CNN
+F 1 "10k" H 4000 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3900 2700 50  0001 C CNN
+F 3 "~" H 3900 2700 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 3900 2700 50  0001 C CNN "Link"
+F 5 "0.00559$" H 3900 2700 50  0001 C CNN "Price"
+	1    3900 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 2950 3850 2950
+$Comp
+L power:GND #PWR04
+U 1 1 60861A84
+P 3900 3400
+F 0 "#PWR04" H 3900 3150 50  0001 C CNN
+F 1 "GND" H 4000 3400 50  0000 C CNN
+F 2 "" H 3900 3400 50  0001 C CNN
+F 3 "" H 3900 3400 50  0001 C CNN
+	1    3900 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 3400 3900 3350
+$Comp
+L power:GND #PWR011
+U 1 1 608957DC
+P 4850 3400
+F 0 "#PWR011" H 4850 3150 50  0001 C CNN
+F 1 "GND" H 4950 3400 50  0000 C CNN
+F 2 "" H 4850 3400 50  0001 C CNN
+F 3 "" H 4850 3400 50  0001 C CNN
+	1    4850 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 3350 4850 3400
+$Comp
+L power:GND #PWR012
+U 1 1 608980AE
+P 4850 4900
+F 0 "#PWR012" H 4850 4650 50  0001 C CNN
+F 1 "GND" H 4950 4900 50  0000 C CNN
+F 2 "" H 4850 4900 50  0001 C CNN
+F 3 "" H 4850 4900 50  0001 C CNN
+	1    4850 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 4850 4850 4900
+Wire Wire Line
+	4150 3050 4500 3050
+Wire Wire Line
+	4500 4350 4150 4350
+Wire Wire Line
+	4500 4550 4300 4550
+$Comp
+L Device:C_Small C3
+U 1 1 608B41B2
+P 4650 2500
+F 0 "C3" V 4600 2300 50  0000 C CNN
+F 1 "100n" V 4500 2300 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4650 2500 50  0001 C CNN
+F 3 "~" H 4650 2500 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 4650 2500 50  0001 C CNN "Link"
+F 5 "0.00499$" H 4650 2500 50  0001 C CNN "Price"
+	1    4650 2500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C4
+U 1 1 608B5221
+P 4650 4000
+F 0 "C4" V 4650 3800 50  0000 C CNN
+F 1 "100n" V 4550 3800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4650 4000 50  0001 C CNN
+F 3 "~" H 4650 4000 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 4650 4000 50  0001 C CNN "Link"
+F 5 "0.00499$" H 4650 4000 50  0001 C CNN "Price"
+	1    4650 4000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4800 3950 4800 4000
+Wire Wire Line
+	4750 4000 4800 4000
+Connection ~ 4800 4000
+Wire Wire Line
+	4800 4000 4800 4050
+Wire Wire Line
+	4800 2450 4800 2500
+Wire Wire Line
+	4750 2500 4800 2500
+Connection ~ 4800 2500
+Wire Wire Line
+	4800 2500 4800 2550
+$Comp
+L power:GND #PWR07
+U 1 1 608C57D3
+P 4500 2550
+F 0 "#PWR07" H 4500 2300 50  0001 C CNN
+F 1 "GND" H 4400 2450 50  0000 C CNN
+F 2 "" H 4500 2550 50  0001 C CNN
+F 3 "" H 4500 2550 50  0001 C CNN
+	1    4500 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 2550 4500 2500
+Wire Wire Line
+	4500 2500 4550 2500
+$Comp
+L power:GND #PWR08
+U 1 1 608C9632
+P 4500 4050
+F 0 "#PWR08" H 4500 3800 50  0001 C CNN
+F 1 "GND" H 4400 3950 50  0000 C CNN
+F 2 "" H 4500 4050 50  0001 C CNN
+F 3 "" H 4500 4050 50  0001 C CNN
+	1    4500 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 4050 4500 4000
+Wire Wire Line
+	4500 4000 4550 4000
+Wire Wire Line
+	5200 2950 5350 2950
+Text Label 5400 4450 0    50   ~ 0
+SIGNAL
+Wire Wire Line
+	5400 4450 5200 4450
+Wire Wire Line
+	4900 2500 4900 2550
+Text Label 5450 2500 0    50   ~ 0
+DIR
+$Comp
+L power:GND #PWR017
+U 1 1 60918E04
+P 6900 3650
+F 0 "#PWR017" H 6900 3400 50  0001 C CNN
+F 1 "GND" H 6900 3500 50  0000 C CNN
+F 2 "" H 6900 3650 50  0001 C CNN
+F 3 "" H 6900 3650 50  0001 C CNN
+	1    6900 3650
+	1    0    0    -1  
+$EndComp
+Text Label 8300 3400 0    50   ~ 0
+ADC_IN
+Text Label 8300 3700 0    50   ~ 0
+DIR
+$Comp
+L Device:R_Small R13
+U 1 1 608359BF
+P 8700 4100
+F 0 "R13" V 8900 4100 50  0000 C CNN
+F 1 "470R" V 8800 4100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8700 4100 50  0001 C CNN
+F 3 "~" H 8700 4100 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAJ0471TDE" H 8700 4100 50  0001 C CNN "Link"
+F 5 "0.00195$" H 8700 4100 50  0001 C CNN "Price"
+	1    8700 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R1
+U 1 1 6087BD19
+P 3750 3250
+F 0 "R1" H 3600 3300 50  0000 C CNN
+F 1 "10k" H 3600 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3750 3250 50  0001 C CNN
+F 3 "~" H 3750 3250 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 3750 3250 50  0001 C CNN "Link"
+F 5 "0.00559$" H 3750 3250 50  0001 C CNN "Price"
+	1    3750 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 6050 7450 6050
+Wire Wire Line
+	7200 5700 7450 5700
+Wire Wire Line
+	7450 5700 7450 6050
+Connection ~ 7450 6050
+Wire Wire Line
+	7450 6050 7500 6050
+Wire Wire Line
+	7000 5700 6750 5700
+Wire Wire Line
+	6750 5700 6750 5950
+Connection ~ 6750 5950
+Wire Wire Line
+	6750 5950 6800 5950
+Wire Wire Line
+	3900 2950 3900 3100
+$Comp
+L power:GND #PWR01
+U 1 1 60AB993C
+P 3750 3400
+F 0 "#PWR01" H 3750 3150 50  0001 C CNN
+F 1 "GND" H 3650 3400 50  0000 C CNN
+F 2 "" H 3750 3400 50  0001 C CNN
+F 3 "" H 3750 3400 50  0001 C CNN
+	1    3750 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 3350 3750 3400
+Wire Wire Line
+	3750 3150 3750 3100
+Wire Wire Line
+	3750 3100 3900 3100
+Connection ~ 3900 3100
+Wire Wire Line
+	3900 3100 3900 3150
+Wire Wire Line
+	3900 2800 3900 2950
+Connection ~ 3900 2950
+Wire Wire Line
+	3900 2550 3900 2600
+Wire Wire Line
+	3850 2850 4300 2850
+Wire Wire Line
+	4900 2500 5150 2500
+Wire Wire Line
+	4150 3050 4150 4350
+Wire Wire Line
+	4300 2850 4300 4550
+Connection ~ 4300 2850
+Wire Wire Line
+	4300 2850 4500 2850
+Wire Wire Line
+	5150 2500 5150 3550
+Connection ~ 5150 2500
+Wire Wire Line
+	5150 2500 5450 2500
+Wire Wire Line
+	4900 3550 5150 3550
+Wire Wire Line
+	4900 3550 4900 4050
+$Comp
+L Device:R_Small R4
+U 1 1 60B4AC1F
+P 3900 4200
+F 0 "R4" H 4000 4250 50  0000 C CNN
+F 1 "10k" H 4000 4150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3900 4200 50  0001 C CNN
+F 3 "~" H 3900 4200 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 3900 4200 50  0001 C CNN "Link"
+F 5 "0.00559$" H 3900 4200 50  0001 C CNN "Price"
+	1    3900 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4100 3900 4050
+Wire Wire Line
+	3750 4650 3750 4600
+Wire Wire Line
+	3750 4600 3900 4600
+$Comp
+L power:GND #PWR02
+U 1 1 60B74C25
+P 3750 4950
+F 0 "#PWR02" H 3750 4700 50  0001 C CNN
+F 1 "GND" H 3755 4777 50  0000 C CNN
+F 2 "" H 3750 4950 50  0001 C CNN
+F 3 "" H 3750 4950 50  0001 C CNN
+	1    3750 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 4850 3750 4950
+Wire Wire Line
+	3900 4300 3900 4450
+Connection ~ 3900 4600
+Connection ~ 3900 4450
+Wire Wire Line
+	3900 4450 3900 4600
+Wire Wire Line
+	3850 4350 4150 4350
+Connection ~ 4150 4350
+$Comp
+L Device:R_Small R7
+U 1 1 60BD455D
+P 6600 6300
+F 0 "R7" H 6700 6350 50  0000 C CNN
+F 1 "10k" H 6700 6250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6600 6300 50  0001 C CNN
+F 3 "~" H 6600 6300 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 6600 6300 50  0001 C CNN "Link"
+F 5 "0.00559$" H 6600 6300 50  0001 C CNN "Price"
+	1    6600 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R6
+U 1 1 60BD60B4
+P 6600 5800
+F 0 "R6" H 6500 5950 50  0000 C CNN
+F 1 "10k" H 6500 5850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6600 5800 50  0001 C CNN
+F 3 "~" H 6600 5800 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 6600 5800 50  0001 C CNN "Link"
+F 5 "0.00559$" H 6600 5800 50  0001 C CNN "Price"
+	1    6600 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C5
+U 1 1 60BE0571
+P 6450 6300
+F 0 "C5" H 6250 6400 50  0000 L CNN
+F 1 "1u" H 6250 6300 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6450 6300 50  0001 C CNN
+F 3 "~" H 6450 6300 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 6450 6300 50  0001 C CNN "Link"
+F 5 "0.00793$" H 6450 6300 50  0001 C CNN "Price"
+	1    6450 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR015
+U 1 1 60BEC1D1
+P 6600 6450
+F 0 "#PWR015" H 6600 6200 50  0001 C CNN
+F 1 "GND" H 6650 6300 50  0000 C CNN
+F 2 "" H 6600 6450 50  0001 C CNN
+F 3 "" H 6600 6450 50  0001 C CNN
+	1    6600 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 60BECCED
+P 6450 6450
+F 0 "#PWR013" H 6450 6200 50  0001 C CNN
+F 1 "GND" H 6400 6300 50  0000 C CNN
+F 2 "" H 6450 6450 50  0001 C CNN
+F 3 "" H 6450 6450 50  0001 C CNN
+	1    6450 6450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 5900 6600 6150
+Wire Wire Line
+	6450 6200 6450 6150
+Wire Wire Line
+	6450 6150 6600 6150
+Connection ~ 6600 6150
+Wire Wire Line
+	6600 6150 6600 6200
+Wire Wire Line
+	6600 6400 6600 6450
+Wire Wire Line
+	6450 6400 6450 6450
+Wire Wire Line
+	6500 5950 6750 5950
+Wire Wire Line
+	6800 6150 6600 6150
+Wire Wire Line
+	6600 5650 6600 5700
+Text Label 9350 4100 0    50   ~ 0
+OUT_ANALOG
+$Comp
+L Device:C_Small C13
+U 1 1 60EFEE04
+P 8900 4300
+F 0 "C13" H 8850 4150 50  0000 L CNN
+F 1 "2.2u" H 8800 4250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8900 4300 50  0001 C CNN
+F 3 "~" H 8900 4300 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A225KQ8NNNC" H 8900 4300 50  0001 C CNN "Link"
+F 5 "0.01226$" H 8900 4300 50  0001 C CNN "Price"
+	1    8900 4300
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR027
+U 1 1 60F0325F
+P 8900 4450
+F 0 "#PWR027" H 8900 4200 50  0001 C CNN
+F 1 "GND" H 8905 4277 50  0000 C CNN
+F 2 "" H 8900 4450 50  0001 C CNN
+F 3 "" H 8900 4450 50  0001 C CNN
+	1    8900 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 4450 8900 4400
+Wire Wire Line
+	8250 4100 8500 4100
+Wire Wire Line
+	8800 4100 8900 4100
+Wire Wire Line
+	8900 4100 8900 4200
+$Comp
+L Device:R_Small R15
+U 1 1 60F1F4B3
+P 9100 4100
+F 0 "R15" V 9000 4100 50  0000 C CNN
+F 1 "4.7k" V 8900 4100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 9100 4100 50  0001 C CNN
+F 3 "~" H 9100 4100 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/CQ03SAJ0472T5E" H 9100 4100 50  0001 C CNN "Link"
+F 5 "0.00234$" H 9100 4100 50  0001 C CNN "Price"
+	1    9100 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C15
+U 1 1 60F20054
+P 9250 4250
+F 0 "C15" H 9150 4150 50  0000 L CNN
+F 1 "330n" H 9100 4250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 9250 4250 50  0001 C CNN
+F 3 "~" H 9250 4250 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B334KO8NNNC" H 9250 4250 50  0001 C CNN "Link"
+F 5 "0.01545$" H 9250 4250 50  0001 C CNN "Price"
+	1    9250 4250
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR029
+U 1 1 60F210C6
+P 9250 4450
+F 0 "#PWR029" H 9250 4200 50  0001 C CNN
+F 1 "GND" H 9255 4277 50  0000 C CNN
+F 2 "" H 9250 4450 50  0001 C CNN
+F 3 "" H 9250 4450 50  0001 C CNN
+	1    9250 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9250 4350 9250 4450
+Wire Wire Line
+	9000 4100 8900 4100
+Connection ~ 8900 4100
+Wire Wire Line
+	9200 4100 9250 4100
+Wire Wire Line
+	9250 4100 9250 4150
+Wire Wire Line
+	9350 4100 9250 4100
+Connection ~ 9250 4100
+$Comp
+L Device:R_Small R5
+U 1 1 610E186F
+P 5450 2950
+F 0 "R5" V 5550 2950 50  0000 C CNN
+F 1 "22R" V 5650 2950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5450 2950 50  0001 C CNN
+F 3 "~" H 5450 2950 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/0603SAJ0220T5E" H 5450 2950 50  0001 C CNN "Link"
+F 5 "0.00156$" H 5450 2950 50  0001 C CNN "Price"
+	1    5450 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L oe_flow:TLV9062 U3
+U 1 1 6118A6B6
+P 7100 6050
+F 0 "U3" H 7100 6350 50  0000 C CNN
+F 1 "TLV9062" H 7100 6250 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7100 6050 50  0001 C CNN
+F 3 "" H 7100 6050 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/582269/TLV9062IDR" H 7100 6050 50  0001 C CNN "Link"
+F 5 "0.64$" H 7100 6050 50  0001 C CNN "Price"
+	1    7100 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L oe_flow:TLV9062 U3
+U 2 1 6119B2E4
+P 8550 6150
+F 0 "U3" H 8550 5850 50  0000 C CNN
+F 1 "TLV9062" H 8550 5950 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 8550 6150 50  0001 C CNN
+F 3 "" H 8550 6150 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/582269/TLV9062IDR" H 8550 6150 50  0001 C CNN "Link"
+F 5 "0.64$" H 8550 6150 50  0001 C CNN "Price"
+	2    8550 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L oe_flow:TLV9062 U3
+U 3 1 6119DAE3
+P 8550 7350
+F 0 "U3" H 8650 7300 50  0000 C CNN
+F 1 "TLV9062" H 8650 7400 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 8550 7350 50  0001 C CNN
+F 3 "" H 8550 7350 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/582269/TLV9062IDR" H 8550 7350 50  0001 C CNN "Link"
+F 5 "0.64$" H 8550 7350 50  0001 C CNN "Price"
+	3    8550 7350
+	1    0    0    -1  
+$EndComp
+Text Label 6500 5950 2    50   ~ 0
+SIGNAL
+$Comp
+L oe_flow:NC7SB3157P6X U2
+U 1 1 611D9D3F
+P 4850 4450
+F 0 "U2" H 5350 4700 50  0000 L CNN
+F 1 "NC7SB3157P6X" H 5100 4800 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6_Handsoldering" H 4850 4450 50  0001 C CNN
+F 3 "" H 4850 4450 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/487925/NC7SB3157P6X" H 4850 4450 50  0001 C CNN "Link"
+F 5 "0.18147$" H 4850 4450 50  0001 C CNN "Price"
+	1    4850 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_ST_STM32L0:STM32L031F4Px U4
+U 1 1 607B7AF8
+P 7750 3900
+F 0 "U4" H 8700 4550 50  0000 C CNN
+F 1 "STM32L031F4Px" H 8700 4650 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 7350 3200 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00140359.pdf" H 7750 3900 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/492349/STM32L031F4P6" H 7750 3900 50  0001 C CNN "Link"
+F 5 "2.85153$" H 7750 3900 50  0001 C CNN "Price"
+	1    7750 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 4700 7750 4750
+Wire Wire Line
+	6950 3600 6900 3600
+Wire Wire Line
+	6900 3600 6900 3650
+Wire Wire Line
+	8300 3400 8250 3400
+Text Label 8300 3600 0    50   ~ 0
+PULSE
+Wire Wire Line
+	8300 3700 8250 3700
+Wire Wire Line
+	8300 3600 8250 3600
+NoConn ~ 7250 4200
+NoConn ~ 7250 4300
+NoConn ~ 7250 4500
+NoConn ~ 8250 4300
+NoConn ~ 8250 4200
+NoConn ~ 8250 4000
+NoConn ~ 8250 3800
+NoConn ~ 8250 3900
+NoConn ~ 8250 3500
+$Comp
+L power:VDDA #PWR014
+U 1 1 608E0DA5
+P 6600 5650
+F 0 "#PWR014" H 6600 5500 50  0001 C CNN
+F 1 "VDDA" H 6615 5823 50  0000 C CNN
+F 2 "" H 6600 5650 50  0001 C CNN
+F 3 "" H 6600 5650 50  0001 C CNN
+	1    6600 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDDA #PWR024
+U 1 1 608E41CF
+P 8450 6950
+F 0 "#PWR024" H 8450 6800 50  0001 C CNN
+F 1 "VDDA" H 8465 7123 50  0000 C CNN
+F 2 "" H 8450 6950 50  0001 C CNN
+F 3 "" H 8450 6950 50  0001 C CNN
+	1    8450 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDDA #PWR05
+U 1 1 608E77D2
+P 3900 4050
+F 0 "#PWR05" H 3900 3900 50  0001 C CNN
+F 1 "VDDA" H 3915 4223 50  0000 C CNN
+F 2 "" H 3900 4050 50  0001 C CNN
+F 3 "" H 3900 4050 50  0001 C CNN
+	1    3900 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDDA #PWR03
+U 1 1 608EA4CA
+P 3900 2550
+F 0 "#PWR03" H 3900 2400 50  0001 C CNN
+F 1 "VDDA" H 3915 2723 50  0000 C CNN
+F 2 "" H 3900 2550 50  0001 C CNN
+F 3 "" H 3900 2550 50  0001 C CNN
+	1    3900 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L oe_flow:LR9102G U5
+U 1 1 609369DE
+P 11300 2800
+F 0 "U5" H 11300 3167 50  0000 C CNN
+F 1 "LR9102G" H 11300 3076 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 11300 2900 50  0001 C CNN
+F 3 "" H 11300 2900 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/497420/LR9102G-33-AE5-R" H 11300 2800 50  0001 C CNN "Link"
+F 5 "0.08491$" H 11300 2800 50  0001 C CNN "Price"
+	1    11300 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR040
+U 1 1 6094003F
+P 11800 3000
+F 0 "#PWR040" H 11800 2750 50  0001 C CNN
+F 1 "GND" H 11805 2827 50  0000 C CNN
+F 2 "" H 11800 3000 50  0001 C CNN
+F 3 "" H 11800 3000 50  0001 C CNN
+	1    11800 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11800 2950 11800 3000
+Wire Wire Line
+	11800 2650 11800 2700
+Wire Wire Line
+	11700 2700 11800 2700
+Connection ~ 11800 2700
+Wire Wire Line
+	11800 2700 11800 2750
+Wire Wire Line
+	11300 3100 11300 3150
+$Comp
+L Device:C_Small C17
+U 1 1 6095B727
+P 10500 2850
+F 0 "C17" H 10450 2650 50  0000 L CNN
+F 1 "2.2u 16v" H 10400 2750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 10500 2850 50  0001 C CNN
+F 3 "~" H 10500 2850 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A225KO8NNNC" H 10500 2850 50  0001 C CNN "Link"
+F 5 "0.01940$" H 10500 2850 50  0001 C CNN "Price"
+	1    10500 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR031
+U 1 1 6095CEA4
+P 10500 3050
+F 0 "#PWR031" H 10500 2800 50  0001 C CNN
+F 1 "GND" H 10505 2877 50  0000 C CNN
+F 2 "" H 10500 3050 50  0001 C CNN
+F 3 "" H 10500 3050 50  0001 C CNN
+	1    10500 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10500 2950 10500 3000
+Connection ~ 10500 2700
+Wire Wire Line
+	10500 2700 10500 2750
+Wire Wire Line
+	10500 2700 10600 2700
+Wire Wire Line
+	10900 2900 10850 2900
+Wire Wire Line
+	10650 2900 10600 2900
+Wire Wire Line
+	10600 2900 10600 2700
+Connection ~ 10600 2700
+Wire Wire Line
+	10600 2700 10900 2700
+$Comp
+L power:GND #PWR035
+U 1 1 609B92D7
+P 11300 4150
+F 0 "#PWR035" H 11300 3900 50  0001 C CNN
+F 1 "GND" H 11305 3977 50  0000 C CNN
+F 2 "" H 11300 4150 50  0001 C CNN
+F 3 "" H 11300 4150 50  0001 C CNN
+	1    11300 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR032
+U 1 1 609B92E3
+P 10500 3650
+F 0 "#PWR032" H 10500 3500 50  0001 C CNN
+F 1 "+5V" H 10515 3823 50  0000 C CNN
+F 2 "" H 10500 3650 50  0001 C CNN
+F 3 "" H 10500 3650 50  0001 C CNN
+	1    10500 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR042
+U 1 1 609B92F5
+P 11800 4000
+F 0 "#PWR042" H 11800 3750 50  0001 C CNN
+F 1 "GND" H 11805 3827 50  0000 C CNN
+F 2 "" H 11800 4000 50  0001 C CNN
+F 3 "" H 11800 4000 50  0001 C CNN
+	1    11800 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11800 3950 11800 4000
+Wire Wire Line
+	11800 3650 11800 3700
+Wire Wire Line
+	11700 3700 11800 3700
+Connection ~ 11800 3700
+Wire Wire Line
+	11800 3700 11800 3750
+Wire Wire Line
+	11300 4100 11300 4150
+$Comp
+L Device:C_Small C18
+U 1 1 609B9301
+P 10500 3850
+F 0 "C18" H 10300 3750 50  0000 L CNN
+F 1 "2.2u 16v" H 10250 3850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 10500 3850 50  0001 C CNN
+F 3 "~" H 10500 3850 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A225KO8NNNC" H 10500 3850 50  0001 C CNN "Link"
+F 5 "0.01940$" H 10500 3850 50  0001 C CNN "Price"
+	1    10500 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR033
+U 1 1 609B9307
+P 10500 4000
+F 0 "#PWR033" H 10500 3750 50  0001 C CNN
+F 1 "GND" H 10505 3827 50  0000 C CNN
+F 2 "" H 10500 4000 50  0001 C CNN
+F 3 "" H 10500 4000 50  0001 C CNN
+	1    10500 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10500 3650 10500 3700
+Connection ~ 10500 3700
+Wire Wire Line
+	10500 3700 10500 3750
+Wire Wire Line
+	10500 3700 10600 3700
+Wire Wire Line
+	10900 3900 10850 3900
+Wire Wire Line
+	10650 3900 10600 3900
+Wire Wire Line
+	10600 3900 10600 3700
+Connection ~ 10600 3700
+Wire Wire Line
+	10600 3700 10900 3700
+$Comp
+L power:VDDA #PWR041
+U 1 1 609C3041
+P 11800 3650
+F 0 "#PWR041" H 11800 3500 50  0001 C CNN
+F 1 "VDDA" H 11815 3823 50  0000 C CNN
+F 2 "" H 11800 3650 50  0001 C CNN
+F 3 "" H 11800 3650 50  0001 C CNN
+	1    11800 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR023
+U 1 1 609C88ED
+P 8150 3150
+F 0 "#PWR023" H 8150 2900 50  0001 C CNN
+F 1 "GND" H 8250 3050 50  0000 C CNN
+F 2 "" H 8150 3150 50  0001 C CNN
+F 3 "" H 8150 3150 50  0001 C CNN
+	1    8150 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 3100 7850 3100
+Wire Wire Line
+	7850 3100 7850 3200
+Wire Wire Line
+	8100 2950 8150 2950
+Wire Wire Line
+	8150 2950 8150 3100
+Wire Wire Line
+	8100 3100 8150 3100
+Connection ~ 8150 3100
+Wire Wire Line
+	8150 3100 8150 3150
+$Comp
+L power:VDDA #PWR021
+U 1 1 609DA152
+P 7850 2900
+F 0 "#PWR021" H 7850 2750 50  0001 C CNN
+F 1 "VDDA" H 7900 3050 50  0000 C CNN
+F 2 "" H 7850 2900 50  0001 C CNN
+F 3 "" H 7850 2900 50  0001 C CNN
+	1    7850 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7850 2900 7850 2950
+Connection ~ 7850 3100
+Wire Wire Line
+	7900 2950 7850 2950
+Connection ~ 7850 2950
+Wire Wire Line
+	7850 2950 7850 3100
+$Comp
+L power:VDD #PWR010
+U 1 1 608B1993
+P 4800 3950
+F 0 "#PWR010" H 4800 3800 50  0001 C CNN
+F 1 "VDD" H 4700 4050 50  0000 C CNN
+F 2 "" H 4800 3950 50  0001 C CNN
+F 3 "" H 4800 3950 50  0001 C CNN
+	1    4800 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDD #PWR09
+U 1 1 608B0E7D
+P 4800 2450
+F 0 "#PWR09" H 4800 2300 50  0001 C CNN
+F 1 "VDD" H 4700 2550 50  0000 C CNN
+F 2 "" H 4800 2450 50  0001 C CNN
+F 3 "" H 4800 2450 50  0001 C CNN
+	1    4800 2450
+	1    0    0    -1  
+$EndComp
+Text Label 5700 2950 0    50   ~ 0
+PULSE
+Wire Wire Line
+	5700 2950 5550 2950
+$Comp
+L oe_flow:NC7SB3157P6X U1
+U 1 1 608FA63A
+P 4850 2950
+F 0 "U1" H 5350 3200 50  0000 L CNN
+F 1 "NC7SB3157P6X" H 5100 3300 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6_Handsoldering" H 4850 2950 50  0001 C CNN
+F 3 "" H 4850 2950 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/487925/NC7SB3157P6X" H 4850 2950 50  0001 C CNN "Link"
+F 5 "0.18147$" H 4850 2950 50  0001 C CNN "Price"
+	1    4850 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C8
+U 1 1 60903756
+P 8000 2950
+F 0 "C8" V 7900 2900 50  0000 L CNN
+F 1 "1u" V 7950 3050 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8000 2950 50  0001 C CNN
+F 3 "~" H 8000 2950 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 8000 2950 50  0001 C CNN "Link"
+F 5 "0.00793$" H 8000 2950 50  0001 C CNN "Price"
+	1    8000 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C9
+U 1 1 609038E6
+P 8000 3100
+F 0 "C9" V 8100 3050 50  0000 L CNN
+F 1 "100n" V 7950 3200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8000 3100 50  0001 C CNN
+F 3 "~" H 8000 3100 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 8000 3100 50  0001 C CNN "Link"
+F 5 "0.00499$" H 8000 3100 50  0001 C CNN "Price"
+	1    8000 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R17
+U 1 1 60AA64E3
+P 10750 3900
+F 0 "R17" V 10700 3900 50  0000 C CNN
+F 1 "10k" V 10650 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 10750 3900 50  0001 C CNN
+F 3 "~" H 10750 3900 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 10750 3900 50  0001 C CNN "Link"
+F 5 "0.00559$" H 10750 3900 50  0001 C CNN "Price"
+	1    10750 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R16
+U 1 1 60AA86AA
+P 10750 2900
+F 0 "R16" V 10700 2900 50  0000 C CNN
+F 1 "10k" V 10650 2900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 10750 2900 50  0001 C CNN
+F 3 "~" H 10750 2900 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 10750 2900 50  0001 C CNN "Link"
+F 5 "0.00559$" H 10750 2900 50  0001 C CNN "Price"
+	1    10750 2900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10350 2750 10350 2700
+Wire Wire Line
+	10350 2700 10500 2700
+Wire Wire Line
+	10350 2950 10350 3000
+Wire Wire Line
+	10350 3000 10500 3000
+Wire Wire Line
+	10500 3000 10500 3050
+Connection ~ 10500 3000
+$Comp
+L power:GND #PWR037
+U 1 1 60B0A88A
+P 11550 5050
+F 0 "#PWR037" H 11550 4800 50  0001 C CNN
+F 1 "GND" H 11555 4877 50  0000 C CNN
+F 2 "" H 11550 5050 50  0001 C CNN
+F 3 "" H 11550 5050 50  0001 C CNN
+	1    11550 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR036
+U 1 1 60B0ACEF
+P 11550 4650
+F 0 "#PWR036" H 11550 4500 50  0001 C CNN
+F 1 "+5V" H 11565 4823 50  0000 C CNN
+F 2 "" H 11550 4650 50  0001 C CNN
+F 3 "" H 11550 4650 50  0001 C CNN
+	1    11550 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11550 5050 11550 5000
+Wire Wire Line
+	11550 5000 11600 5000
+Text Label 11550 4900 2    50   ~ 0
+OUT_ANALOG
+Wire Wire Line
+	11600 4900 11550 4900
+Text Label 8300 4500 0    50   ~ 0
+SWCLK
+Text Label 8300 4400 0    50   ~ 0
+SWDIO
+Wire Wire Line
+	8300 4400 8250 4400
+Wire Wire Line
+	8300 4500 8250 4500
+$Comp
+L Connector:Conn_01x04_Male J2
+U 1 1 60B4884D
+P 11800 5500
+F 0 "J2" H 11772 5474 50  0000 R CNN
+F 1 "Conn_01x04_Male" H 11772 5383 50  0000 R CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x04_P1.27mm_Vertical" H 11800 5500 50  0001 C CNN
+F 3 "~" H 11800 5500 50  0001 C CNN
+F 4 "https://ozdisan.com/connectors-and-interconnects/headers/pin-headers/L-KLS1-207C-2-0-1-12-S-5" H 11800 5500 50  0001 C CNN "Link"
+F 5 "0.10187$" H 11800 5500 50  0001 C CNN "Price"
+	1    11800 5500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR038
+U 1 1 60B4A648
+P 11550 5750
+F 0 "#PWR038" H 11550 5500 50  0001 C CNN
+F 1 "GND" H 11555 5577 50  0000 C CNN
+F 2 "" H 11550 5750 50  0001 C CNN
+F 3 "" H 11550 5750 50  0001 C CNN
+	1    11550 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11600 5700 11550 5700
+Wire Wire Line
+	11550 5700 11550 5750
+Text Label 11550 5600 2    50   ~ 0
+SWCLK
+Text Label 11550 5500 2    50   ~ 0
+SWDIO
+Wire Wire Line
+	11550 5600 11600 5600
+Wire Wire Line
+	11550 5500 11600 5500
+Wire Wire Line
+	7150 3400 7200 3400
+Wire Wire Line
+	7150 3600 7250 3600
+Text Label 7200 3250 2    50   ~ 0
+NRST
+Wire Wire Line
+	7200 3250 7200 3400
+Connection ~ 7200 3400
+Wire Wire Line
+	7200 3400 7250 3400
+Text Label 11550 5400 2    50   ~ 0
+NRST
+Wire Wire Line
+	11550 5400 11600 5400
+$Comp
+L oe_flow:LR9102G U6
+U 1 1 60BCAAAF
+P 11300 3800
+F 0 "U6" H 11300 4167 50  0000 C CNN
+F 1 "LR9102G" H 11300 4076 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 11300 3900 50  0001 C CNN
+F 3 "" H 11300 3900 50  0001 C CNN
+F 4 "https://ozdisan.com/Product/Detail/497420/LR9102G-33-AE5-R" H 11300 3800 50  0001 C CNN "Link"
+F 5 "0.08491$" H 11300 3800 50  0001 C CNN "Price"
+	1    11300 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C19
+U 1 1 60BD0344
+P 11800 2850
+F 0 "C19" V 11700 2800 50  0000 L CNN
+F 1 "1u" V 11750 2950 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 11800 2850 50  0001 C CNN
+F 3 "~" H 11800 2850 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 11800 2850 50  0001 C CNN "Link"
+F 5 "0.00793$" H 11800 2850 50  0001 C CNN "Price"
+	1    11800 2850
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C20
+U 1 1 60BD1DAD
+P 11800 3850
+F 0 "C20" V 11700 3800 50  0000 L CNN
+F 1 "1u" V 11750 3950 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 11800 3850 50  0001 C CNN
+F 3 "~" H 11800 3850 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10A105KO8NNNC" H 11800 3850 50  0001 C CNN "Link"
+F 5 "0.00793$" H 11800 3850 50  0001 C CNN "Price"
+	1    11800 3850
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R_Small R9
+U 1 1 60BD6B60
+P 7050 3600
+F 0 "R9" V 7000 3600 50  0000 C CNN
+F 1 "10k" V 6950 3600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7050 3600 50  0001 C CNN
+F 3 "~" H 7050 3600 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/resistors/smt-smd-and-chip-resistors/HP03W5F1002T5E" H 7050 3600 50  0001 C CNN "Link"
+F 5 "0.00559$" H 7050 3600 50  0001 C CNN "Price"
+	1    7050 3600
+	0    1    1    0   
+$EndComp
+Text Label 8500 4000 0    50   ~ 0
+OUT_PWM
+Wire Wire Line
+	8500 4000 8500 4100
+Connection ~ 8500 4100
+Wire Wire Line
+	8500 4100 8600 4100
+Text Label 11550 4800 2    50   ~ 0
+OUT_PWM
+$Comp
+L Connector:Conn_01x04_Male J1
+U 1 1 60C1ABA7
+P 11800 4800
+F 0 "J1" H 11772 4774 50  0000 R CNN
+F 1 "Conn_01x04_Male" H 11772 4683 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 11800 4800 50  0001 C CNN
+F 3 "~" H 11800 4800 50  0001 C CNN
+F 4 "https://ozdisan.com/connectors-and-interconnects/headers/pin-headers/L-KLS1-207-1-04-S" H 11800 4800 50  0001 C CNN "Link"
+F 5 "0.01501$" H 11800 4800 50  0001 C CNN "Price"
+	1    11800 4800
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	11550 4800 11600 4800
+Wire Wire Line
+	11550 4650 11550 4700
+Wire Wire Line
+	11550 4700 11600 4700
+Wire Wire Line
+	10500 3950 10500 4000
+Wire Wire Line
+	10500 2650 10500 2700
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 607FF0DE
+P 11400 4650
+F 0 "#FLG0101" H 11400 4725 50  0001 C CNN
+F 1 "PWR_FLAG" H 11200 4650 50  0000 C CNN
+F 2 "" H 11400 4650 50  0001 C CNN
+F 3 "~" H 11400 4650 50  0001 C CNN
+	1    11400 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11400 4650 11400 4700
+Wire Wire Line
+	11400 4700 11550 4700
+Connection ~ 11550 4700
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 6080FAF5
+P 11400 4950
+F 0 "#FLG0102" H 11400 5025 50  0001 C CNN
+F 1 "PWR_FLAG" H 11200 4950 50  0000 C CNN
+F 2 "" H 11400 4950 50  0001 C CNN
+F 3 "~" H 11400 4950 50  0001 C CNN
+	1    11400 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11400 4950 11400 5000
+Wire Wire Line
+	11400 5000 11550 5000
+Connection ~ 11550 5000
+$Comp
+L Device:CP_Small C16
+U 1 1 60859EC4
+P 10350 2850
+F 0 "C16" H 10050 2800 50  0000 L CNN
+F 1 "47u 10v" H 9950 2900 50  0000 L CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-12_Kemet-T_Pad1.50x2.35mm_HandSolder" H 10350 2850 50  0001 C CNN
+F 3 "~" H 10350 2850 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/tantalum-capacitors/TSK1A476TSSR" H 10350 2850 50  0001 C CNN "Link"
+F 5 "0.16112$" H 10350 2850 50  0001 C CNN "Price"
+	1    10350 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Speaker_Ultrasound LS2
+U 1 1 60843816
+P 3650 4450
+F 0 "LS2" H 4200 4150 50  0000 C CNN
+F 1 "Speaker_Ultrasound" H 4200 4050 50  0000 C CNN
+F 2 "flow:US_RXTX_10mm" H 3615 4400 50  0001 C CNN
+F 3 "~" H 3615 4400 50  0001 C CNN
+F 4 "0.5$" H 3650 4450 50  0001 C CNN "Price"
+	1    3650 4450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C21
+U 1 1 609CE773
+P 7050 3400
+F 0 "C21" V 7050 3200 50  0000 C CNN
+F 1 "100n" V 6950 3200 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7050 3400 50  0001 C CNN
+F 3 "~" H 7050 3400 50  0001 C CNN
+F 4 "https://ozdisan.com/passive-components/capacitors/smt-smd-and-mlcc-capacitors/CL10B104KB8NNND" H 7050 3400 50  0001 C CNN "Link"
+F 5 "0.00499$" H 7050 3400 50  0001 C CNN "Price"
+	1    7050 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6950 3400 6900 3400
+Wire Wire Line
+	6900 3400 6900 3600
+Connection ~ 6900 3600
+$EndSCHEMATC

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name oe_stm32)(type Legacy)(uri ${KIPRJMOD}/oe_stm32.lib)(options "")(descr ""))
+  (lib (name oe_flow)(type Legacy)(uri ${KIPRJMOD}/oe_flow.lib)(options "")(descr ""))
+)
