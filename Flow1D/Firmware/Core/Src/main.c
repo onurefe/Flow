@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "flow.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,7 +84,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+	Flow_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -101,8 +101,9 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM21_Init();
   MX_TIM22_Init();
+  
   /* USER CODE BEGIN 2 */
-
+  Flow_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */

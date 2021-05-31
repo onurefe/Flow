@@ -62,11 +62,11 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define SYS_FREQ 32000000
 #define US_FREQ 40000
-#define SAMPLES_PER_CYCLE 8
+#define SAMPLES_PER_CYCLE 4
 #define TIM2_RELOAD ((((SYS_FREQ/US_FREQ)/SAMPLES_PER_CYCLE)*SAMPLES_PER_CYCLE)-1)
 #define TIM21_RELOAD (SYS_FREQ/(SAMPLES_PER_CYCLE*US_FREQ)-1)
 #define TIM2_CH3_PULSE (TIM2_RELOAD/2)
-#define TIM21_CH1_PULSE (TIM21_RELOAD/2)
+#define TIM21_CH1_PULSE (1)
 #define ANOUT_RESOLUTION 1024
 #define TIM22_RELOAD ((SYS_FREQ/ANOUT_RESOLUTION)-1)
 #define ADC_IN_Pin GPIO_PIN_0

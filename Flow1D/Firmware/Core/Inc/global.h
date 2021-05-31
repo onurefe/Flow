@@ -4,7 +4,8 @@
 /* Includes ----------------------------------------------------------------*/
 #include "main.h"
 
-/* Configuration -----------------------------------------------------------*/
+/* Configuration -----------------------------------------------------------*/ 
+#define DIRECTION_SWITCHING
 
 /* Constants ---------------------------------------------------------------*/
 #ifndef M_2PI
@@ -26,5 +27,8 @@ enum
     TRUE = !FALSE,
 };
 typedef uint8_t Bool_t;
+
+typedef qint0_31_t int32_t;
+typedef qint0_15_t int16_t;
 
 #endif
