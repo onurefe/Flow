@@ -10,6 +10,7 @@ typedef short int int16_t;
 
 typedef int32_t qint0_31_t;
 typedef int16_t qint0_15_t;
+typedef uint16_t quint0_16_t;
 
 typedef enum
 {
