@@ -1,5 +1,5 @@
-#ifndef __GLOBAL_DEFINITIONS_H
-#define __GLOBAL_DEFINITIONS_H
+#ifndef __GENERIC_H
+#define __GENERIC_H
 
 /* Includes ----------------------------------------------------------------*/
 #include "main.h"

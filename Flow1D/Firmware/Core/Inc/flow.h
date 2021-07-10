@@ -11,8 +11,8 @@ enum
 };
 typedef uint8_t Flow_State_t;
 
-void Flow_Init(void);
-void Flow_Start(void);
-void Flow_Stop(void);
+extern void Flow_Init(void);
+extern void Flow_Start(void);
+extern void Flow_Stop(void);
 
 #endif

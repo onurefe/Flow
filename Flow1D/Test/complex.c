@@ -1,5 +1,6 @@
 #include "math.h"
 #include "complex.h"
+#include "fast_math.h"
 
 void Complex_Divide(Complex_t *a, Complex_t *b, Complex_t *r)
 {
@@ -48,7 +49,5 @@ void Complex_Subtract(Complex_t *a, Complex_t *b, Complex_t *r)
 
 float Complex_Argument(Complex_t *a)
 {
-    float rad = atan2(a->img, a->real);
-   
-   return rad;
+	return FastMath_Atan2(a->img, a->real);
 }
