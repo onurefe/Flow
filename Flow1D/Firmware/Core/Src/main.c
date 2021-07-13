@@ -101,7 +101,6 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM21_Init();
   MX_TIM22_Init();
-  
   /* USER CODE BEGIN 2 */
   Flow_Start();
   /* USER CODE END 2 */
@@ -186,11 +185,11 @@ static void MX_ADC_Init(void)
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc.Init.ContinuousConvMode = DISABLE;
   hadc.Init.DiscontinuousConvMode = DISABLE;
-  hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-  hadc.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T2_TRGO;
+  hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_FALLING;
+  hadc.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T21_CC2;
   hadc.Init.DMAContinuousRequests = ENABLE;
   hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-  hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+  hadc.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
   hadc.Init.LowPowerAutoWait = DISABLE;
   hadc.Init.LowPowerFrequencyMode = DISABLE;
   hadc.Init.LowPowerAutoPowerOff = DISABLE;
@@ -251,7 +250,7 @@ static void MX_TIM2_Init(void)
     Error_Handler();
   }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_ENABLE;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_ENABLE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
@@ -306,7 +305,7 @@ static void MX_TIM21_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_TIM_OC_Init(&htim21) != HAL_OK)
+  if (HAL_TIM_PWM_Init(&htim21) != HAL_OK)
   {
     Error_Handler();
   }
@@ -316,20 +315,21 @@ static void MX_TIM21_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC1REF;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC2REF;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim21, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  sConfigOC.OCMode = TIM_OCMODE_ACTIVE;
-  sConfigOC.Pulse = TIM21_CH1_PULSE;
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = TIM21_CH2_PULSE;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_OC_ConfigChannel(&htim21, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  if (HAL_TIM_PWM_ConfigChannel(&htim21, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
   }
+  __HAL_TIM_DISABLE_OCxPRELOAD(&htim21, TIM_CHANNEL_2);
   /* USER CODE BEGIN TIM21_Init 2 */
 
   /* USER CODE END TIM21_Init 2 */

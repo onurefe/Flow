@@ -28,7 +28,8 @@ enum
 };
 typedef uint8_t Bool_t;
 
-typedef qint0_31_t int32_t;
-typedef qint0_15_t int16_t;
+typedef int64_t qint0_63_t;
+typedef int32_t qint0_31_t;
+typedef int16_t qint0_15_t;
 
 #endif

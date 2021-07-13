@@ -1,7 +1,7 @@
 #ifndef __FLOW_H
 #define __FLOW_H
 
-#include "global.h"
+#include "generic.h"
 
 enum
 {

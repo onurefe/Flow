@@ -10,7 +10,7 @@
             "executable": "build/Flow.elf",
             "svdFile": ".vscode/STM32L0x1.svd",
             "configFiles": [
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 ".vscode/stm32l0.cfg"
             ],
             "preLaunchTask": "Build project"

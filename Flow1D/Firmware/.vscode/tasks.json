@@ -94,7 +94,7 @@
             "command": "/home/onur/STM32Toolchain/openocd/bin/openocd",
             "args": [
                 "-f",
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 "-f",
                 ".vscode/stm32l0.cfg",
                 "-c",
@@ -109,7 +109,7 @@
             "command": "/home/onur/STM32Toolchain/openocd/bin/openocd",
             "args": [
                 "-f",
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 "-f",
                 ".vscode/stm32l0.cfg",
                 "-c",
@@ -123,7 +123,7 @@
             "command": "/home/onur/STM32Toolchain/openocd/bin/openocd",
             "args": [
                 "-f",
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 "-f",
                 ".vscode/stm32l0.cfg",
                 "-c init",
@@ -138,7 +138,7 @@
             "command": "/home/onur/STM32Toolchain/openocd/bin/openocd",
             "args": [
                 "-f",
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 "-f",
                 ".vscode/stm32l0.cfg",
                 "-c init",
@@ -153,7 +153,7 @@
             "command": "/home/onur/STM32Toolchain/openocd/bin/openocd",
             "args": [
                 "-f",
-                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink-v2.cfg",
                 "-f",
                 ".vscode/stm32l0.cfg",
                 "-c init",
