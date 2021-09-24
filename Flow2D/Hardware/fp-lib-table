@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name flow)(type KiCad)(uri ${KIPRJMOD}/flow.pretty)(options "")(descr ""))
+  (lib (name oe_ultrasonic)(type KiCad)(uri ${KIPRJMOD}/oe_ultrasonic.pretty)(options "")(descr ""))
+)
