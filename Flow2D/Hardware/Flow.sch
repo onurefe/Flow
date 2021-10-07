@@ -858,28 +858,28 @@ Wire Wire Line
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 4 1 60F6CC8E
-P 6950 7450
-F 0 "U3" H 6950 7650 50  0000 C CNN
-F 1 "TLV9064IDR" H 6950 7750 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6950 7450 50  0001 C CNN
-F 3 "~" H 6950 7450 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6950 7450 50  0001 C CNN "Link"
-F 5 "0.77646" H 6950 7450 50  0001 C CNN "Price"
-	4    6950 7450
+P 8950 8100
+F 0 "U3" H 8950 8300 50  0000 C CNN
+F 1 "TLV9064IDR" H 8950 8400 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8950 8100 50  0001 C CNN
+F 3 "~" H 8950 8100 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 8950 8100 50  0001 C CNN "Link"
+F 5 "0.77646" H 8950 8100 50  0001 C CNN "Price"
+	4    8950 8100
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 5 1 60F6DBAD
-P 6500 8700
-F 0 "U3" H 6600 8800 50  0000 C CNN
-F 1 "TLV9064IDR" H 6600 8700 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6500 8700 50  0001 C CNN
-F 3 "~" H 6500 8700 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6500 8700 50  0001 C CNN "Link"
-F 5 "0.77646" H 6500 8700 50  0001 C CNN "Price"
-	5    6500 8700
-	1    0    0    1   
+P 6300 8700
+F 0 "U3" H 6450 8800 50  0000 C CNN
+F 1 "TLV9064IDR" H 6450 8700 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6300 8700 50  0001 C CNN
+F 3 "~" H 6300 8700 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6300 8700 50  0001 C CNN "Link"
+F 5 "0.77646" H 6300 8700 50  0001 C CNN "Price"
+	5    6300 8700
+	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:R_Small R1
@@ -1044,14 +1044,14 @@ Wire Wire Line
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 1 1 61090EA9
-P 9000 7350
-F 0 "U3" H 9000 7550 50  0000 C CNN
-F 1 "TLV9064IDR" H 9000 7650 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 9000 7350 50  0001 C CNN
-F 3 "~" H 9000 7350 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 9000 7350 50  0001 C CNN "Link"
-F 5 "0.77646" H 9000 7350 50  0001 C CNN "Price"
-	1    9000 7350
+P 8950 8850
+F 0 "U3" H 8950 9050 50  0000 C CNN
+F 1 "TLV9064IDR" H 8950 9150 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8950 8850 50  0001 C CNN
+F 3 "~" H 8950 8850 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 8950 8850 50  0001 C CNN "Link"
+F 5 "0.77646" H 8950 8850 50  0001 C CNN "Price"
+	1    8950 8850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1087,14 +1087,14 @@ $EndComp
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 2 1 60F6BA2F
-P 8950 8100
-F 0 "U3" H 8950 8300 50  0000 C CNN
-F 1 "TLV9064IDR" H 8950 8400 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8950 8100 50  0001 C CNN
-F 3 "~" H 8950 8100 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 8950 8100 50  0001 C CNN "Link"
-F 5 "0.77646" H 8950 8100 50  0001 C CNN "Price"
-	2    8950 8100
+P 6950 7450
+F 0 "U3" H 6950 7650 50  0000 C CNN
+F 1 "TLV9064IDR" H 6950 7750 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6950 7450 50  0001 C CNN
+F 3 "~" H 6950 7450 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6950 7450 50  0001 C CNN "Link"
+F 5 "0.77646" H 6950 7450 50  0001 C CNN "Price"
+	2    6950 7450
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1295,14 +1295,14 @@ $EndComp
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 3 1 60F6C53B
-P 8950 8850
-F 0 "U3" H 8950 9050 50  0000 C CNN
-F 1 "TLV9064IDR" H 8950 9150 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 8950 8850 50  0001 C CNN
-F 3 "~" H 8950 8850 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 8950 8850 50  0001 C CNN "Link"
-F 5 "0.77646" H 8950 8850 50  0001 C CNN "Price"
-	3    8950 8850
+P 9000 7350
+F 0 "U3" H 9000 7550 50  0000 C CNN
+F 1 "TLV9064IDR" H 9000 7650 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 9000 7350 50  0001 C CNN
+F 3 "~" H 9000 7350 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 9000 7350 50  0001 C CNN "Link"
+F 5 "0.77646" H 9000 7350 50  0001 C CNN "Price"
+	3    9000 7350
 	1    0    0    -1  
 $EndComp
 $Comp

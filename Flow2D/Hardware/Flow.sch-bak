@@ -871,15 +871,15 @@ $EndComp
 $Comp
 L Device:Opamp_Quad_Generic U3
 U 5 1 60F6DBAD
-P 6500 8700
-F 0 "U3" H 6600 8800 50  0000 C CNN
-F 1 "TLV9064IDR" H 6600 8700 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6500 8700 50  0001 C CNN
-F 3 "~" H 6500 8700 50  0001 C CNN
-F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6500 8700 50  0001 C CNN "Link"
-F 5 "0.77646" H 6500 8700 50  0001 C CNN "Price"
-	5    6500 8700
-	1    0    0    1   
+P 6300 8700
+F 0 "U3" H 6450 8800 50  0000 C CNN
+F 1 "TLV9064IDR" H 6450 8700 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6300 8700 50  0001 C CNN
+F 3 "~" H 6300 8700 50  0001 C CNN
+F 4 "https://ozdisan.com/entegre-devreler-ics/lineer-entegreler/amplifikatorler/TLV9064IDR" H 6300 8700 50  0001 C CNN "Link"
+F 5 "0.77646" H 6300 8700 50  0001 C CNN "Price"
+	5    6300 8700
+	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:R_Small R1
@@ -947,7 +947,7 @@ Wire Wire Line
 	8600 8200 8600 8400
 Wire Wire Line
 	8850 8400 8600 8400
-Text Label 8300 8400 2    50   ~ 0
+Text Label 8600 8000 2    50   ~ 0
 SIGNAL_B
 Wire Wire Line
 	8650 8000 8600 8000
@@ -1033,9 +1033,9 @@ Connection ~ 9600 8100
 Wire Wire Line
 	9650 7350 9750 7350
 Connection ~ 9650 7350
-Text Label 8600 8000 2    50   ~ 0
+Text Label 8300 8400 2    50   ~ 0
 VGND
-Text Label 8650 7250 2    50   ~ 0
+Text Label 8350 7650 2    50   ~ 0
 VGND
 Wire Wire Line
 	8350 7650 8400 7650
@@ -1056,7 +1056,7 @@ F 5 "0.77646" H 9000 7350 50  0001 C CNN "Price"
 $EndComp
 Wire Wire Line
 	8700 7250 8650 7250
-Text Label 8350 7650 2    50   ~ 0
+Text Label 8650 7250 2    50   ~ 0
 SIGNAL_A
 $Comp
 L Device:R_Small R19
@@ -1333,7 +1333,7 @@ F 5 "0.00196" H 9450 8850 50  0001 C CNN "Price"
 $EndComp
 Wire Wire Line
 	8350 9150 8300 9150
-Text Label 8500 8750 2    50   ~ 0
+Text Label 8300 9150 2    50   ~ 0
 VGND
 Wire Wire Line
 	9600 8850 9700 8850
@@ -1359,7 +1359,7 @@ F 3 "" H 9600 9150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8650 8750 8500 8750
-Text Label 8300 9150 2    50   ~ 0
+Text Label 8500 8750 2    50   ~ 0
 SIGNAL_C
 Wire Wire Line
 	8550 9150 8600 9150

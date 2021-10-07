@@ -52,14 +52,15 @@ DMA_HandleTypeDef hdma_tim1_ch1;
 /* USER CODE BEGIN PV */
 extern int16_t LowFreqCos[];
 extern int16_t LowFreqSin[];
-extern int16_t MidFreqCos[]; 
+extern int16_t MidFreqCos[];
 extern int16_t MidFreqSin[];
 extern int16_t HighFreqCos[];
-extern int16_t HighFreqSin[]; 
+extern int16_t HighFreqSin[];
 
 uint32_t TIM1CH1_CompareValues[(US_FREQ / US_MODULATION_FREQ)];
-uint16_t ADCBuffer[2 * ADC_TRIGGER_FREQ / DEVICE_OUTPUT_RATE];
+uint16_t ADCBuffer[2 * 3 * ADC_TRIGGER_FREQ / DEVICE_OUTPUT_RATE];
 
+volatile uint32_t isr_time;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,7 +102,6 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -111,40 +111,43 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  // Start pwm output channel(for X axis).
-  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK)
-  {
-    while(1);
-  }
-
-  // Start pwm output channel(for Y axis).
-  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3) != HAL_OK)
-  {
-    while(1);
-  }
-
-  // Set modulation signal. This is done due to obtain two different frequency components around the center frequency. 
+  // Set modulation signal. This is done due to obtain two different frequency components around the center frequency.
   for (uint16_t i = 0; i < (US_FREQ / US_MODULATION_FREQ); i++)
   {
-    if (i < ((US_FREQ / US_MODULATION_FREQ) >> 1))
+    if (((US_FREQ / US_MODULATION_FREQ) >> 1) > i)
     {
       TIM1CH1_CompareValues[i] = ((TIM1_RELOAD + 1) >> 1);
     }
     else
     {
-      TIM1CH1_CompareValues[i] = 0;
+      TIM1CH1_CompareValues[i] = ((TIM1_RELOAD + 1) >> 1);
     }
   }
 
-  // Start ultrasonic transducer timer. This will also trigger the start of timer3. 
+  // Start ultrasonic transducer timer. This will also trigger the start of timer3.
   if (HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_1, TIM1CH1_CompareValues, (US_FREQ / US_MODULATION_FREQ)) != HAL_OK)
   {
     while(1);
   }
 
-  if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADCBuffer, sizeof(ADCBuffer)/sizeof(ADCBuffer[0])))
+  // Start pwm output channel(for X axis).
+  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK)
   {
-    while(1);
+    while (1)
+      ;
+  }
+
+  // Start pwm output channel(for Y axis).
+  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3) != HAL_OK)
+  {
+    while (1)
+      ;
+  }
+
+  if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADCBuffer, sizeof(ADCBuffer) / sizeof(ADCBuffer[0])))
+  {
+    while (1)
+      ;
   }
 
   // Start ADC trigger timer.
@@ -241,7 +244,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
   hadc1.Init.LowPowerAutoPowerOff = DISABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
@@ -299,7 +302,6 @@ static void MX_TIM1_Init(void)
 {
 
   /* USER CODE BEGIN TIM1_Init 0 */
-
   /* USER CODE END TIM1_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
@@ -356,7 +358,6 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  __HAL_TIM_DISABLE_OCxPRELOAD(&htim1, TIM_CHANNEL_3);
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
@@ -451,10 +452,10 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Channel1_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 2, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
   /* DMA1_Channel2_3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
 
 }
@@ -484,46 +485,86 @@ void process(uint16_t *buff)
 
   for (uint16_t i = 0; i < (ADC_TRIGGER_FREQ / DEVICE_OUTPUT_RATE); i++)
   {
-    low_freq_sumx[0] += ((int32_t)buff[3*i] * LowFreqCos[i]) >> 6;
-    low_freq_sumy[0] += ((int32_t)buff[3*i] * LowFreqSin[i]) >> 6;
-    low_freq_sumx[1] += ((int32_t)buff[3*i+1] * LowFreqCos[i]) >> 6;
-    low_freq_sumx[1] += ((int32_t)buff[3*i+1] * LowFreqSin[i]) >> 6;
-    low_freq_sumx[2] += ((int32_t)buff[3*i+2] * LowFreqCos[i]) >> 6;
-    low_freq_sumx[2] += ((int32_t)buff[3*i+2] * LowFreqSin[i]) >> 6;
+    low_freq_sumx[0] += ((int32_t)buff[3 * i] * LowFreqCos[i]) >> 5;
+    low_freq_sumy[0] += ((int32_t)buff[3 * i] * LowFreqSin[i]) >> 5;
+    low_freq_sumx[1] += ((int32_t)buff[3 * i + 1] * LowFreqCos[i]) >> 5;
+    low_freq_sumy[1] += ((int32_t)buff[3 * i + 1] * LowFreqSin[i]) >> 5;
+    low_freq_sumx[2] += ((int32_t)buff[3 * i + 2] * LowFreqCos[i]) >> 5;
+    low_freq_sumy[2] += ((int32_t)buff[3 * i + 2] * LowFreqSin[i]) >> 5;
 
-    mid_freq_sumx[0] += ((int32_t)buff[3*i] * MidFreqCos[i]) >> 6;
-    mid_freq_sumy[0] += ((int32_t)buff[3*i] * MidFreqSin[i]) >> 6;
-    mid_freq_sumx[1] += ((int32_t)buff[3*i+1] * MidFreqCos[i]) >> 6;
-    mid_freq_sumy[1] += ((int32_t)buff[3*i+1] * MidFreqSin[i]) >> 6;
-    mid_freq_sumx[2] += ((int32_t)buff[3*i+2] * MidFreqCos[i]) >> 6;
-    mid_freq_sumy[2] += ((int32_t)buff[3*i+2] * MidFreqSin[i]) >> 6;
+    // Since the middle frequency is always quarter of the sampling frequency, an important optimization can be made.
+    if ((i&0x03) == 0)
+    {
+      mid_freq_sumx[0] += buff[3 * i];
+      mid_freq_sumx[1] += buff[3 * i + 1];
+      mid_freq_sumx[2] += buff[3 * i + 2];
+    }
+    else if ((i&0x03) == 1)
+    {
+      mid_freq_sumy[0] += buff[3 * i];
+      mid_freq_sumy[1] += buff[3 * i + 1];
+      mid_freq_sumy[2] += buff[3 * i + 2];
+    }
+    else if ((i&0x03) == 2)
+    {
+      mid_freq_sumx[0] -= buff[3 * i];
+      mid_freq_sumx[1] -= buff[3 * i + 1];
+      mid_freq_sumx[2] -= buff[3 * i + 2];
+    }
+    else
+    {
+      mid_freq_sumy[0] -= buff[3 * i];
+      mid_freq_sumy[1] -= buff[3 * i + 1];
+      mid_freq_sumy[2] -= buff[3 * i + 2];
+    }
 
-    high_freq_sumx[0] += ((int32_t)buff[3*i] * HighFreqCos[i]) >> 6;
-    high_freq_sumy[0] += ((int32_t)buff[3*i] * HighFreqSin[i]) >> 6;
-    high_freq_sumx[1] += ((int32_t)buff[3*i+1] * HighFreqCos[i]) >> 6;
-    high_freq_sumy[1] += ((int32_t)buff[3*i+1] * HighFreqSin[i]) >> 6;
-    high_freq_sumx[2] += ((int32_t)buff[3*i+2] * HighFreqCos[i]) >> 6;
-    high_freq_sumy[2] += ((int32_t)buff[3*i+2] * HighFreqSin[i]) >> 6;
+    high_freq_sumx[0] += ((int32_t)buff[3 * i] * HighFreqCos[i]) >> 5;
+    high_freq_sumy[0] += ((int32_t)buff[3 * i] * HighFreqSin[i]) >> 5;
+    high_freq_sumx[1] += ((int32_t)buff[3 * i + 1] * HighFreqCos[i]) >> 5;
+    high_freq_sumy[1] += ((int32_t)buff[3 * i + 1] * HighFreqSin[i]) >> 5;
+    high_freq_sumx[2] += ((int32_t)buff[3 * i + 2] * HighFreqCos[i]) >> 5;
+    high_freq_sumy[2] += ((int32_t)buff[3 * i + 2] * HighFreqSin[i]) >> 5;
   }
-
-  Complex_t low_freq_phasor[3];
-  Complex_t mid_freq_phasor[3];
-  Complex_t high_freq_phasor[3];
-  float hl_angle_diff[3];
+  
+  float sound_velocity[3] = {0.0, 0.0, 0.0};
 
   for (uint16_t i = 0; i < 3; i++)
   {
-    low_freq_phasor[i].real = qfp_int2float(low_freq_sumx[i]);
-    low_freq_phasor[i].img = qfp_int2float(low_freq_sumy[i]);
-    mid_freq_phasor[i].real = qfp_int2float(mid_freq_sumx[i]);
-    mid_freq_phasor[i].img = qfp_int2float(mid_freq_sumy[i]);
-    high_freq_phasor[i].real = qfp_int2float(high_freq_sumx[i]);
-    high_freq_phasor[i].img = qfp_int2float(high_freq_sumy[i]);
-
+    float rough_phase;
+    float precise_phase;
+    Complex_t low_freq_phasor;
+    Complex_t mid_freq_phasor;
+    Complex_t high_freq_phasor;
     Complex_t hl;
-    Complex_Divide(&high_freq_phasor[i], &low_freq_phasor[i], &hl);
-    hl_angle_diff[i] = Complex_Argument(&hl);
+
+    low_freq_phasor.real = qfp_int2float(low_freq_sumx[i]);
+    low_freq_phasor.img = qfp_int2float(low_freq_sumy[i]);
+    mid_freq_phasor.real = qfp_int2float(mid_freq_sumx[i]);
+    mid_freq_phasor.img = qfp_int2float(mid_freq_sumy[i]);
+    high_freq_phasor.real = qfp_int2float(high_freq_sumx[i]);
+    high_freq_phasor.img = qfp_int2float(high_freq_sumy[i]);
+    
+    Complex_Divide(&high_freq_phasor, &low_freq_phasor, &hl);
+    rough_phase = qfp_fmul(Complex_Argument(&hl), (US_FREQ / (2.0 * US_MODULATION_FREQ)));
+    precise_phase = Complex_Argument(&mid_freq_phasor);
+
+    while (qfp_fsub(rough_phase, precise_phase) > M_PI)
+    {
+      precise_phase = qfp_fadd(precise_phase, M_2PI);
+    }
+
+    sound_velocity[i] = qfp_fdiv((US_FREQ * M_2PI * SOUND_PATHLENGTH), precise_phase);
   }
+
+  // Convert to vectors which form a triangle.
+  float u12, u23, u31;
+  u12 = qfp_fsub(sound_velocity[1], sound_velocity[0]);
+  u23 = qfp_fsub(sound_velocity[2], sound_velocity[1]);
+  u31 = qfp_fsub(sound_velocity[0], sound_velocity[2]);
+
+  float vx, vy;
+  vx = qfp_fadd(qfp_fadd(qfp_fmul(u12, 0.25f), qfp_fmul(u31, 0.25f)), qfp_fmul(u23, -0.5f));
+  vy = qfp_fadd(qfp_fmul(u12, M_SQRT3_2), qfp_fmul(u31, -M_SQRT3_2));
 }
 
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
