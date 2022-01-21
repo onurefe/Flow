@@ -53,7 +53,6 @@ Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_exti.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim_ex.c \
 Core/Src/system_stm32g0xx.c \
-Core/Src/tables.c \
 Core/Src/complex.c
 
 # ASM sources

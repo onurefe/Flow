@@ -21,6 +21,10 @@
 #define M_SQRT3_2 0.86602540378f
 #endif
 
+#ifndef M_SQRT3
+#define M_SQRT3 1.73205080757f
+#endif
+
 /* Typedefs ----------------------------------------------------------------*/
 enum
 {

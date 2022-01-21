@@ -67,8 +67,6 @@ void Error_Handler(void);
 #define TIM3_RELOAD ((TIM3_CLOCK_FREQ/ADC_TRIGGER_FREQ)-1)
 #define TIM3_CLOCK_FREQ 64000000
 #define TIM1_CLOCK_FREQ 64000000
-#define US_MODULATION_FREQ 400
-#define SOUND_PATHLENGTH 0.08
 #define CHA_A_Pin GPIO_PIN_0
 #define CHA_A_GPIO_Port GPIOA
 #define CHA_B_Pin GPIO_PIN_1
@@ -84,7 +82,13 @@ void Error_Handler(void);
 #define PWM_X_Pin GPIO_PIN_10
 #define PWM_X_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
-
+#define ISR_FREQ 400
+#define OUTPUT_UPDATE_FREQ 20
+#define TRIANGLE_EDGE_IN_METERS 0.034641f
+#define DEFAULT_SPEED_OF_SOUND 340.0f
+#define GAIN (TRIANGLE_EDGE_IN_METERS * 6.283185307179586f * ((float)US_FREQ) / (DEFAULT_SPEED_OF_SOUND * DEFAULT_SPEED_OF_SOUND))
+#define RANGE 20.0f
+#define OUTPUT_FILTER_FREQ 10.0f
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

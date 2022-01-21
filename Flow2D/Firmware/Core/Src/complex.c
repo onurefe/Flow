@@ -27,9 +27,9 @@ void Complex_Normalize(Complex_t *a, Complex_t *r)
 {
     float norm;
     norm = qfp_fadd(qfp_fmul(a->real, a->real), qfp_fmul(a->img, a->img));
-
-    r->real = a->real / norm;
-    r->img = a->img / norm;
+    
+    r->real = qfp_fdiv(a->real, norm);
+    r->img = qfp_fdiv(a->img, norm);
 }
 
 void Complex_Conjugate(Complex_t *a, Complex_t *r)
