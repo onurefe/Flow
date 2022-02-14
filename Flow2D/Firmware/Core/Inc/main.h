@@ -29,7 +29,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g0xx_hal.h"
-
+#include "config.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -60,35 +60,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define ADC_TRIGGER_FREQ (US_FREQ * 4)
-#define US_FREQ 40000
-#define TIM3_CH1_COMPARE 1
-#define TIM1_RELOAD ((TIM1_CLOCK_FREQ/US_FREQ)-1)
-#define TIM3_RELOAD ((TIM3_CLOCK_FREQ/ADC_TRIGGER_FREQ)-1)
-#define TIM3_CLOCK_FREQ 64000000
-#define TIM1_CLOCK_FREQ 64000000
-#define CHA_A_Pin GPIO_PIN_0
-#define CHA_A_GPIO_Port GPIOA
-#define CHA_B_Pin GPIO_PIN_1
-#define CHA_B_GPIO_Port GPIOA
-#define CHA_C_Pin GPIO_PIN_2
-#define CHA_C_GPIO_Port GPIOA
-#define PULSE_N_Pin GPIO_PIN_7
-#define PULSE_N_GPIO_Port GPIOA
-#define PULSE_Pin GPIO_PIN_8
-#define PULSE_GPIO_Port GPIOA
-#define PWM_Y_Pin GPIO_PIN_9
-#define PWM_Y_GPIO_Port GPIOA
-#define PWM_X_Pin GPIO_PIN_10
-#define PWM_X_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
-#define ISR_FREQ 400
-#define OUTPUT_UPDATE_FREQ 20
-#define TRIANGLE_EDGE_IN_METERS 0.034641f
-#define DEFAULT_SPEED_OF_SOUND 340.0f
-#define GAIN (TRIANGLE_EDGE_IN_METERS * 6.283185307179586f * ((float)US_FREQ) / (DEFAULT_SPEED_OF_SOUND * DEFAULT_SPEED_OF_SOUND))
-#define RANGE 20.0f
-#define OUTPUT_FILTER_FREQ 10.0f
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

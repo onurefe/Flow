@@ -3,7 +3,7 @@
     "ABOUT2": "User should not edit this fields, instead it should edit 'c_cpp_properties.json'",
     "ABOUT3": "This file is regenerated on 'Update workspace' task.",
     "VERSION": "1.7",
-    "LAST_RUN": "2021-09-25 19:39:37.130801",
+    "LAST_RUN": "2022-02-10 01:01:51.336859",
     "cSources": [
         "Core/Src/main.c",
         "Core/Src/stm32g0xx_it.c",
@@ -27,7 +27,12 @@
         "Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_exti.c",
         "Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim.c",
         "Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim_ex.c",
-        "Core/Src/system_stm32g0xx.c"
+        "Core/Src/system_stm32g0xx.c",
+        "Core/Src/flash.c",
+        "Core/Src/flow.c",
+        "Core/Src/matrix.c",
+        "Core/Src/polyreg.c",
+        "Core/Src/correlation.c"
     ],
     "asmSources": [],
     "ldSources": [

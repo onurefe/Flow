@@ -58,7 +58,10 @@ Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_exti.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim.c \
 Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim_ex.c \
-Core/Src/system_stm32g0xx.c  
+Core/Src/system_stm32g0xx.c \
+Core/Src/flash.c \
+Core/Src/flow.c \
+Core/Src/correlation.c
 
 # ASM sources
 ASM_SOURCES =  \

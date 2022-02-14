@@ -24,6 +24,10 @@
 /* USER CODE BEGIN Includes */
 #include "qfplib.h"
 #include "complex.h"
+#include "flow.h"
+#include "config.h"
+#include "flash.h"
+#include "temperature.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,9 +53,11 @@ TIM_HandleTypeDef htim3;
 DMA_HandleTypeDef hdma_tim1_ch1;
 
 /* USER CODE BEGIN PV */
-uint16_t ADCBuffer[2 * 3 * ADC_TRIGGER_FREQ / ISR_FREQ];
-Complex_t Offsets[3] = {{1.3783344f, 0.594385803f}, {0.274015725f, -0.637563825}, {0.697410405f, 0.659802914f}};
-float VxFiltered, VyFiltered;
+static Flow_Calibration_t Calibration;
+static Bool_t CalibrationCompleted = FALSE;
+static Bool_t SearchCompleted = FALSE;
+static float Search2CalibrationOffset;
+static float Temperature;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,7 +68,9 @@ static void MX_ADC1_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-static void process(uint16_t *buff);
+static void measurementCompletedCb(float vx, float vy, float temperature);
+static void calibrationCompletedCb(Flow_Calibration_t *calibration);
+static void searchCompletedCb(float search2CalibrationOffset, float correlation, float temperature);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -102,13 +110,6 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  // Start ultrasonic transducer timer. This will also trigger the start of timer3.
-  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) != HAL_OK)
-  {
-    while (1)
-      ;
-  }
-
   // Start pwm output channel(for X axis).
   if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK)
   {
@@ -123,27 +124,68 @@ int main(void)
       ;
   }
 
-  if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADCBuffer, sizeof(ADCBuffer) / sizeof(ADCBuffer[0])))
-  {
-    while (1)
-      ;
-  }
+  // Restore calibration data. If it doesn't exist, run calibrate function.
+  //Flash_Restore((uint64_t *)&Calibration, sizeof(Calibration));
+  //if (Calibration.flashCode != FLASH_CODE)
+  //{
+  Flow_Calibrate(&Calibration, Temperature_GetSpeedOfSound(FLOW_ROOM_TEMPERATURE),
+                 calibrationCompletedCb);
+  //}
+  //else
+  //{
+  // Flow_RunParams_t params;
+  //params.downsamplingNumber = 10;
+  // params.temperatureFilterTc = 1.0f;
+  // params.velocityFilterTc = 0.1f;
 
-  // Start ADC trigger timer.
-  if (HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1) != HAL_OK)
-  {
-    while (1)
-      ;
-  }
-
-  VxFiltered = 0.0f;
-  VyFiltered = 0.0f;
+  //Flow_Run(&Calibration, &params, measurementCompletedCb);
+  //}
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    Flow_Execute();
+
+    if (CalibrationCompleted)
+    {
+      // Store calibration data to flash memory.
+      //Calibration.flashCode = FLASH_CODE;
+      //if (Flash_Store((uint64_t *)&Calibration, (sizeof(Flow_Calibration_t) / sizeof(uint64_t))) != HAL_OK)
+      //{
+      //Error_Handler();
+      //}
+      Flow_SearchSpeedOfSound(&Calibration, searchCompletedCb);
+      //Flow_RunParams_t params;
+      //params.downsamplingNumber = 250;
+      //params.temperatureFilterTc = 1.0f;
+      //params.velocityFilterTc = 0.1f;
+
+      //Flow_Run(&Calibration, &params, measurementCompletedCb);
+
+      CalibrationCompleted = FALSE;
+    }
+    
+    /*
+    if (SearchCompleted)
+    {
+      Flow_SearchSpeedOfSound(&Calibration, searchCompletedCb);
+      SearchCompleted = FALSE;
+    }
+    */
+    
+    if (SearchCompleted)
+    {
+      Flow_RunParams_t params;
+      params.downsamplingNumber = 5;
+      params.temperatureFilterTc = 0.1f;
+      params.velocityFilterTc = 0.05f;
+
+      Flow_Run(&Calibration, Search2CalibrationOffset, &params, measurementCompletedCb);
+
+      SearchCompleted = FALSE;
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -236,7 +278,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
   hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
-  hadc1.Init.SamplingTimeCommon1 = ADC_SAMPLETIME_19CYCLES_5;
+  hadc1.Init.SamplingTimeCommon1 = ADC_SAMPLETIME_7CYCLES_5;
   hadc1.Init.SamplingTimeCommon2 = ADC_SAMPLETIME_1CYCLE_5;
   hadc1.Init.OversamplingMode = DISABLE;
   hadc1.Init.TriggerFrequencyMode = ADC_TRIGGER_FREQ_HIGH;
@@ -269,6 +311,17 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
+  /** Configure Regular Channel
+  */
+  /*
+  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
+  sConfig.Rank = ADC_REGULAR_RANK_4;
+  sConfig.SamplingTime = ADC_SAMPLINGTIME_COMMON_2;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  */
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
@@ -296,7 +349,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = TIM1_RELOAD;
+  htim1.Init.Period = TIM1_RUN_RELOAD;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -321,7 +374,7 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = TIM1_RELOAD / 2;
+  sConfigOC.Pulse = (TIM1_RUN_RELOAD / 2);
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -331,7 +384,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-
+  sConfigOC.Pulse = 0;
   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
@@ -385,7 +438,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = TIM3_RELOAD;
+  htim3.Init.Period = TIM3_RUN_RELOAD;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -446,87 +499,34 @@ static void MX_DMA_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
 }
 
 /* USER CODE BEGIN 4 */
-void process(uint16_t *buff)
+static void measurementCompletedCb(float vx, float vy, float temperature)
 {
-  int32_t sumx[3] = {0, 0, 0};
-  int32_t sumy[3] = {0, 0, 0};
-  float diffspeed[3];
-
-  for (uint16_t i = 0; i < (ADC_TRIGGER_FREQ / ISR_FREQ); i++)
-  {
-    if ((i & 0x03) == 0)
-    {
-      sumx[0] += buff[3 * i];
-      sumx[1] += buff[3 * i + 1];
-      sumx[2] += buff[3 * i + 2];
-    }
-    else if ((i & 0x03) == 1)
-    {
-      sumy[0] += buff[3 * i];
-      sumy[1] += buff[3 * i + 1];
-      sumy[2] += buff[3 * i + 2];
-    }
-    else if ((i & 0x03) == 2)
-    {
-      sumx[0] -= buff[3 * i];
-      sumx[1] -= buff[3 * i + 1];
-      sumx[2] -= buff[3 * i + 2];
-    }
-    else
-    {
-      sumy[0] -= buff[3 * i];
-      sumy[1] -= buff[3 * i + 1];
-      sumy[2] -= buff[3 * i + 2];
-    }
-  }
-
-  for (uint16_t i = 0; i < 3; i++)
-  {
-    Complex_t phasor_a, phasor_b, ratio_ba;
-
-    phasor_a.real = qfp_int2float(sumx[i]);
-    phasor_a.img = qfp_int2float(sumy[i]);
-    phasor_b.real = qfp_int2float(sumx[(i + 1) * (i < 2)]);
-    phasor_b.img = qfp_int2float(sumy[(i + 1) * (i < 2)]);
-
-    Complex_Divide(&phasor_b, &phasor_a, &ratio_ba);
-    //Offsets[i].real = Offsets[i].real * 0.995 + ratio_ba.real * 0.005;
-    //Offsets[i].img = Offsets[i].img * 0.995 + ratio_ba.img * 0.005;
-    Complex_Divide(&ratio_ba, &Offsets[i], &ratio_ba);
-    diffspeed[i] = Complex_Argument(&ratio_ba);
-  }
-
-  float vx, vy;
-  vx = qfp_fdiv(qfp_fsub(qfp_fadd(diffspeed[2], diffspeed[1]), diffspeed[0]), (GAIN * 2.0f * M_SQRT3));
-  vy = qfp_fdiv(qfp_fsub(diffspeed[2], diffspeed[1]), (GAIN * 3.0f));
-
-  VxFiltered = qfp_fadd(qfp_fmul(vx, (OUTPUT_FILTER_FREQ/ISR_FREQ)), qfp_fmul(VxFiltered, (1.0f - OUTPUT_FILTER_FREQ/ISR_FREQ)));
-  VyFiltered = qfp_fadd(qfp_fmul(vy, (OUTPUT_FILTER_FREQ/ISR_FREQ)), qfp_fmul(VyFiltered, (1.0f - OUTPUT_FILTER_FREQ/ISR_FREQ)));
-
   // Update analog outputs.
   uint16_t comp_x, comp_y;
-  comp_x = (uint16_t)qfp_fmul(qfp_fadd(0.5f, qfp_fdiv(VxFiltered, RANGE)), qfp_int2float(TIM1_RELOAD));
-  comp_y = (uint16_t)qfp_fmul(qfp_fadd(0.5f, qfp_fdiv(VyFiltered, RANGE)), qfp_int2float(TIM1_RELOAD));
+  comp_x = (uint16_t)qfp_fmul(qfp_fadd(0.5f, qfp_fmul(vx, (1.0f / DEFAULT_PWM_RANGE))), qfp_int2float(TIM1_RUN_RELOAD));
+  comp_y = (uint16_t)qfp_fmul(qfp_fadd(0.5f, qfp_fmul(vy, (1.0f / DEFAULT_PWM_RANGE))), qfp_int2float(TIM1_RUN_RELOAD));
 
   __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, comp_x);
   __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, comp_y);
 }
 
-void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+static void calibrationCompletedCb(Flow_Calibration_t *calibration)
 {
-  process(&ADCBuffer[0]);
+  CalibrationCompleted = TRUE;
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+static void searchCompletedCb(float search2CalibrationOffset, float correlation, float temperature)
 {
-  process(&ADCBuffer[3 * (ADC_TRIGGER_FREQ / ISR_FREQ)]);
+  Search2CalibrationOffset = search2CalibrationOffset;
+  Temperature = temperature;
+  SearchCompleted = TRUE;
 }
-
 /* USER CODE END 4 */
 
 /**

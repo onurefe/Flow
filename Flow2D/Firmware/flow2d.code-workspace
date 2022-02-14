@@ -16,7 +16,11 @@
             "stddef.h": "c",
             "stm32_hal_legacy.h": "c",
             "qfplib.h": "c",
-            "complex.h": "c"
-        }
+            "complex.h": "c",
+            "polyreg.h": "c",
+            "generic.h": "c",
+            "interpolate.h": "c"
+        },
+        "cortex-debug.variableUseNaturalFormat": false
     }
 }

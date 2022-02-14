@@ -2,23 +2,28 @@
 #define __GENERIC_H
 
 /* Includes ----------------------------------------------------------------*/
-#include "main.h"
+#include "stm32g0xx_hal.h"
 
 /* Constants ---------------------------------------------------------------*/
 #ifndef M_2PI
 #define M_2PI 6.283185307179586f
 #endif
 
+#ifndef M_SQRT3_2
+#define M_SQRT3_2 (M_SQRT_3 / 2.0f)
+#endif
+
 #ifndef M_PI
-#define M_PI 3.141592653589793f
+#define M_PI (M_2PI/2.0f)
 #endif
 
 #ifndef M_PI_2
-#define M_PI_2 1.5707963267948966f
+#define M_PI_2 (M_PI/2.0f)
 #endif
 
-#ifndef M_SQRT3_2
-#define M_SQRT3_2 0.86602540378f
+
+#ifndef M_PI_4
+#define M_PI_4 (M_PI_2/2.0f)
 #endif
 
 #ifndef M_SQRT3
