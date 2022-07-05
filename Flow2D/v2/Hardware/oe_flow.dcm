@@ -1,0 +1,37 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AZ431-A
+D Adjustable precision voltage regulator
+$ENDCMP
+#
+$CMP LR9102G
+D Low Noise LDO 300ma regulator
+$ENDCMP
+#
+$CMP NC7SB3157P6X
+D Low-Voltage SPDT Analog Switch
+K Analog switch
+$ENDCMP
+#
+$CMP SN74LVC1G125
+D SN74LVC1G125 Single Bus Buffer Gate With 3-State Output
+$ENDCMP
+#
+$CMP SN74LVC2G17
+D Dual schmitt trigger buffer
+$ENDCMP
+#
+$CMP TLV9062
+D 10-MHz, Unity-gain stable, RRIO, Dual CMOS Operational Amplifiers
+$ENDCMP
+#
+$CMP TLV9064
+D 10-MHz, Unity-gain stable, RRIO, Quad CMOS Operational Amplifiers
+K Quad opamp
+$ENDCMP
+#
+$CMP WAS3157B
+D 5.5Ω, 400MHz Bandwidth, SPDT Analog
+$ENDCMP
+#
+#End Doc Library

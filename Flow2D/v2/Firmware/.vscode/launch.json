@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/Flow2D.elf",
+            "svdFile": ".vscode/STM32G031.svd",
+            "configFiles": [
+                "/home/onur/STM32Toolchain/openocd/scripts/interface/stlink.cfg",
+                ".vscode/stm32g0x.cfg"
+            ],
+            "preLaunchTask": "Build project"
+        },
+        {
+            "name": "Debug current Python file",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

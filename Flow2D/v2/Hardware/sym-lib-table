@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "oe_stm32")(type "KiCad")(uri "${KIPRJMOD}/oe_stm32.kicad_sym")(options "")(descr ""))
+  (lib (name "oe_flow")(type "KiCad")(uri "${KIPRJMOD}/oe_flow.kicad_sym")(options "")(descr ""))
+  (lib (name "Flow-rescue")(type "KiCad")(uri "${KIPRJMOD}/Flow-rescue.kicad_sym")(options "")(descr ""))
+)
